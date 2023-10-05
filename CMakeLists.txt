@@ -15,6 +15,7 @@ endif()
 
 add_subdirectory(external/glfw)
 add_subdirectory(external/glad/cmake)
+add_subdirectory(external/glm)
 
 target_include_directories(${PROJECT_NAME} 
 	PUBLIC 
