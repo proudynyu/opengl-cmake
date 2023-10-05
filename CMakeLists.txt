@@ -7,9 +7,27 @@ endif()
 
 project ("CMakeProject1")
 
-add_executable (CMakeProject1 "App.cpp"  "src/window.cpp")
+add_executable (CMakeProject1 "App.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CMakeProject1 PROPERTY CXX_STANDARD 20)
 endif()
+
+add_subdirectory(external/glfw)
+add_subdirectory(external/glad/cmake)
+
+target_include_directories(${PROJECT_NAME} 
+	PUBLIC 
+		external/glfw/include
+)
+
+target_link_directories(${PROJECT_NAME}
+	PUBLIC
+		external/glfw/src
+) 
+
+target_link_libraries(${PROJECT_NAME}
+	glfw
+	opengl32
+)
 
